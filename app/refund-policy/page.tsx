@@ -34,7 +34,7 @@ export default function RefundPolicy() {
               <h2 className="text-2xl font-semibold text-gray-800 mb-3">Refund Process</h2>
               <p>
                 Refunds will be processed through the same payment method used for the original transaction. It may take
-                [insert time frame, e.g., 7-14 days] for the refunded amount to reflect in the customer's account.
+                [insert time frame, e.g., 7-14 days] for the refunded amount to reflect in the customer&apos;s account.
               </p>
             </section>
 

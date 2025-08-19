@@ -44,14 +44,14 @@ export function SharedFooter() {
                 </Link>
               </li>
               <li>
-                <a href="/#services" className="hover:text-blue-500">
+                <Link href="/#services" className="hover:text-blue-500">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#about" className="hover:text-blue-500">
+                <Link href="/#about" className="hover:text-blue-500">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/terms" className="hover:text-blue-500">
@@ -70,9 +70,9 @@ export function SharedFooter() {
             <h3 className="font-bold text-gray-800 mb-4">Support</h3>
             <ul className="space-y-2 text-sm text-gray-600">
               <li>
-                <a href="/#faqs" className="hover:text-blue-500">
+                <Link href="/#faqs" className="hover:text-blue-500">
                   FAQs
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/privacy" className="hover:text-blue-500">
@@ -80,9 +80,9 @@ export function SharedFooter() {
                 </Link>
               </li>
               <li>
-                <a href="/#contact" className="hover:text-blue-500">
+                <Link href="/#contact" className="hover:text-blue-500">
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

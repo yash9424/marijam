@@ -10,6 +10,10 @@ const nextConfig = {
     domains: ['localhost'],
     unoptimized: false,
   },
+  reactStrictMode: false,
+  experimental: {
+    suppressHydrationWarning: true,
+  },
 }
 
 export default nextConfig

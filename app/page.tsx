@@ -617,7 +617,7 @@ export default function Home() {
               <span className="text-red-500">Contact</span> <span className="text-blue-600">Us</span>
             </h2>
             <p className="text-gray-600">
-              Got a Question? We'd love to hear from you. Send us a message and we will respond you as soon as possible
+              Got a Question? We&apos;d love to hear from you. Send us a message and we will respond you as soon as possible
             </p>
           </div>
 
@@ -785,7 +785,7 @@ function TestimonialCard({ name, rating, feedback, avatar }: TestimonialCardProp
           <Star key={i} className={`w-4 h-4 ${i < rating ? "text-yellow-400 fill-current" : "text-gray-300"}`} />
         ))}
       </div>
-      <p className="text-gray-600 text-sm italic">"{feedback}"</p>
+      <p className="text-gray-600 text-sm italic">&quot;{feedback}&quot;</p>
     </div>
   )
 }

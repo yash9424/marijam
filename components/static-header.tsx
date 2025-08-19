@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { ChevronDown, Sparkles, Zap } from "lucide-react"
 import { MobileMenu } from "@/components/mobile-menu"
 
@@ -135,7 +135,9 @@ export function StaticHeader() {
           </Link>
         </div>
 
-        <MobileMenu scrolled={false} />
+        <div className="lg:hidden">
+          <MobileMenu scrolled={false} />
+        </div>
       </div>
     </header>
   )
