@@ -109,38 +109,74 @@ export default function Home() {
               
               {servicesOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-1 w-72 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 z-[101]"
+                  className="absolute top-full left-0 mt-1 w-96 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 z-[101]"
                   style={{ animation: 'fadeInDown 0.3s ease-out' }}
                 >
-                  <div className="p-6">
-                    <div className="grid grid-cols-1 gap-3">
-                      <Link href="/electricity-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">⚡</span>
-                        <span className="font-medium">Electricity Bill</span>
+                  <div className="p-4">
+                    <div className="grid grid-cols-2 gap-2 max-h-80 overflow-y-auto">
+                      <Link href="/mobile-recharge" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">📱</span>
+                        <span className="font-medium text-sm">Mobile Recharge</span>
                       </Link>
-                      <Link href="/water-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">💧</span>
-                        <span className="font-medium">Water Bill Payment</span>
+                      <Link href="/dth-recharge" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🚗</span>
+                        <span className="font-medium text-sm">DTH</span>
                       </Link>
-                      <Link href="/broadband-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📞</span>
-                        <span className="font-medium">Landline / Broadband</span>
+                      <Link href="/electricity-bill" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">💡</span>
+                        <span className="font-medium text-sm">Electricity</span>
                       </Link>
-                      <Link href="/gas-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">🔥</span>
-                        <span className="font-medium">Gas Bill Payment</span>
+                      <Link href="/loan-repayment" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">💰</span>
+                        <span className="font-medium text-sm">Loan Repayment</span>
                       </Link>
-                      <Link href="/mobile-recharge" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📱</span>
-                        <span className="font-medium">Mobile Recharge</span>
+                      <Link href="/piped-gas" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">⛽</span>
+                        <span className="font-medium text-sm">Piped Gas</span>
                       </Link>
-                      <Link href="/dth-recharge" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📺</span>
-                        <span className="font-medium">DTH Recharge</span>
+                      <Link href="/postpaid-bill" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">📱</span>
+                        <span className="font-medium text-sm">Postpaid Bill</span>
                       </Link>
-                      <Link href="/mobile-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-slate-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📋</span>
-                        <span className="font-medium">Mobile Bill Payment</span>
+                      <Link href="/fastag-recharge" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-teal-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🏪</span>
+                        <span className="font-medium text-sm">Fastag Recharge</span>
+                      </Link>
+                      <Link href="/insurance" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🛡️</span>
+                        <span className="font-medium text-sm">Insurance</span>
+                      </Link>
+                      <Link href="/cable-tv" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">📺</span>
+                        <span className="font-medium text-sm">Cable TV</span>
+                      </Link>
+                      <Link href="/broadband-bill" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">📶</span>
+                        <span className="font-medium text-sm">Broadband</span>
+                      </Link>
+                      <Link href="/water-bill" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-blue-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🚰</span>
+                        <span className="font-medium text-sm">Water</span>
+                      </Link>
+                      <Link href="/credit-card" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">💳</span>
+                        <span className="font-medium text-sm">Credit Card</span>
+                      </Link>
+                      <Link href="/municipal-tax" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🏛️</span>
+                        <span className="font-medium text-sm">Municipal Tax</span>
+                      </Link>
+                      <Link href="/club-association" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">⚽</span>
+                        <span className="font-medium text-sm">Club & Association</span>
+                      </Link>
+                      <Link href="/education" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🎓</span>
+                        <span className="font-medium text-sm">Education</span>
+                      </Link>
+                      <Link href="/hospital" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-pink-50 hover:to-rose-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🏥</span>
+                        <span className="font-medium text-sm">Hospital</span>
                       </Link>
                     </div>
                   </div>
@@ -366,28 +402,28 @@ export default function Home() {
           {/* Service Grid with improved spacing */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-16">
             {/* Row 1 */}
-            <ServiceCard icon="📱" title="Mobile Recharge" color="bg-blue-100" />
-            <ServiceCard icon="🚗" title="DTH" color="bg-gray-100" />
-            <ServiceCard icon="💡" title="Electricity" color="bg-yellow-100" />
-            <ServiceCard icon="💰" title="Loan Repayment" color="bg-green-100" />
+            <ServiceCard icon="📱" title="Mobile Recharge" color="bg-blue-100" href="/mobile-recharge" />
+            <ServiceCard icon="🚗" title="DTH" color="bg-gray-100" href="/dth-recharge" />
+            <ServiceCard icon="💡" title="Electricity" color="bg-yellow-100" href="/electricity-bill" />
+            <ServiceCard icon="💰" title="Loan Repayment" color="bg-green-100" href="/loan-repayment" />
 
             {/* Row 2 */}
-            <ServiceCard icon="⛽" title="Piped Gas" color="bg-orange-100" />
-            <ServiceCard icon="📱" title="Postpaid Bill" color="bg-pink-100" />
-            <ServiceCard icon="🏪" title="Fastag Recharge" color="bg-blue-100" />
-            <ServiceCard icon="🛡️" title="Insurance" color="bg-purple-100" />
+            <ServiceCard icon="⛽" title="Piped Gas" color="bg-orange-100" href="/piped-gas" />
+            <ServiceCard icon="📱" title="Postpaid Bill" color="bg-pink-100" href="/postpaid-bill" />
+            <ServiceCard icon="🏪" title="Fastag Recharge" color="bg-blue-100" href="/fastag-recharge" />
+            <ServiceCard icon="🛡️" title="Insurance" color="bg-purple-100" href="/insurance" />
 
             {/* Row 3 */}
-            <ServiceCard icon="📺" title="Cable TV" color="bg-red-100" />
-            <ServiceCard icon="📶" title="Broadband" color="bg-blue-100" />
-            <ServiceCard icon="🚰" title="Water" color="bg-cyan-100" />
-            <ServiceCard icon="💳" title="Credit Card" color="bg-green-100" />
+            <ServiceCard icon="📺" title="Cable TV" color="bg-red-100" href="/cable-tv" />
+            <ServiceCard icon="📶" title="Broadband" color="bg-blue-100" href="/broadband-bill" />
+            <ServiceCard icon="🚰" title="Water" color="bg-cyan-100" href="/water-bill" />
+            <ServiceCard icon="💳" title="Credit Card" color="bg-green-100" href="/credit-card" />
 
             {/* Row 4 */}
-            <ServiceCard icon="🏛️" title="Municipal Tax" color="bg-purple-100" />
-            <ServiceCard icon="⚽" title="Club & Association" color="bg-green-100" />
-            <ServiceCard icon="🎓" title="Education" color="bg-blue-100" />
-            <ServiceCard icon="🏥" title="Hospital" color="bg-pink-100" />
+            <ServiceCard icon="🏛️" title="Municipal Tax" color="bg-purple-100" href="/municipal-tax" />
+            <ServiceCard icon="⚽" title="Club & Association" color="bg-green-100" href="/club-association" />
+            <ServiceCard icon="🎓" title="Education" color="bg-blue-100" href="/education" />
+            <ServiceCard icon="🏥" title="Hospital" color="bg-pink-100" href="/hospital" />
           </div>
         </div>
       </section>
@@ -810,18 +846,19 @@ interface ServiceCardProps {
   icon: string
   title: string
   color: string
+  href: string
 }
 
-function ServiceCard({ icon, title, color }: ServiceCardProps) {
+function ServiceCard({ icon, title, color, href }: ServiceCardProps) {
   return (
-    <div className="flex flex-col items-center text-center group cursor-pointer p-2 sm:p-4">
+    <Link href={href} className="flex flex-col items-center text-center group cursor-pointer p-2 sm:p-4">
       <div
         className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform shadow-sm`}
       >
         <span className="text-xl sm:text-2xl">{icon}</span>
       </div>
       <span className="text-xs sm:text-sm text-gray-700 font-medium leading-tight">{title}</span>
-    </div>
+    </Link>
   )
 }
 

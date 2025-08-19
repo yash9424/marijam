@@ -41,26 +41,53 @@ export function MobileMenu({ scrolled }: MobileMenuProps) {
           <div className="py-2">
             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3 px-2">Services</h3>
             <div className="space-y-1">
-              <Link href="/electricity-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
-                <span>⚡</span><span className="text-sm">Electricity Bill</span>
-              </Link>
-              <Link href="/water-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
-                <span>💧</span><span className="text-sm">Water Bill</span>
-              </Link>
-              <Link href="/broadband-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
-                <span>📞</span><span className="text-sm">Broadband</span>
-              </Link>
-              <Link href="/gas-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
-                <span>🔥</span><span className="text-sm">Gas Bill</span>
-              </Link>
               <Link href="/mobile-recharge" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
                 <span>📱</span><span className="text-sm">Mobile Recharge</span>
               </Link>
               <Link href="/dth-recharge" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
-                <span>📺</span><span className="text-sm">DTH Recharge</span>
+                <span>🚗</span><span className="text-sm">DTH</span>
               </Link>
-              <Link href="/mobile-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
-                <span>📋</span><span className="text-sm">Mobile Bill</span>
+              <Link href="/electricity-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>💡</span><span className="text-sm">Electricity</span>
+              </Link>
+              <Link href="/loan-repayment" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>💰</span><span className="text-sm">Loan Repayment</span>
+              </Link>
+              <Link href="/piped-gas" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>⛽</span><span className="text-sm">Piped Gas</span>
+              </Link>
+              <Link href="/postpaid-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>📱</span><span className="text-sm">Postpaid Bill</span>
+              </Link>
+              <Link href="/fastag-recharge" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>🏪</span><span className="text-sm">Fastag Recharge</span>
+              </Link>
+              <Link href="/insurance" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>🛡️</span><span className="text-sm">Insurance</span>
+              </Link>
+              <Link href="/cable-tv" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>📺</span><span className="text-sm">Cable TV</span>
+              </Link>
+              <Link href="/broadband-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>📶</span><span className="text-sm">Broadband</span>
+              </Link>
+              <Link href="/water-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>🚰</span><span className="text-sm">Water</span>
+              </Link>
+              <Link href="/credit-card" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>💳</span><span className="text-sm">Credit Card</span>
+              </Link>
+              <Link href="/municipal-tax" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>🏛️</span><span className="text-sm">Municipal Tax</span>
+              </Link>
+              <Link href="/club-association" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>⚽</span><span className="text-sm">Club & Association</span>
+              </Link>
+              <Link href="/education" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>🎓</span><span className="text-sm">Education</span>
+              </Link>
+              <Link href="/hospital" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>🏥</span><span className="text-sm">Hospital</span>
               </Link>
             </div>
           </div>
