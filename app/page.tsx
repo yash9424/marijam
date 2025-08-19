@@ -109,74 +109,38 @@ export default function Home() {
               
               {servicesOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-1 w-96 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 z-[101]"
+                  className="absolute top-full left-0 mt-1 w-72 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 z-[101]"
                   style={{ animation: 'fadeInDown 0.3s ease-out' }}
                 >
-                  <div className="p-4">
-                    <div className="grid grid-cols-2 gap-2 max-h-80 overflow-y-auto">
-                      <Link href="/mobile-recharge" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">📱</span>
-                        <span className="font-medium text-sm">Mobile Recharge</span>
+                  <div className="p-6">
+                    <div className="grid grid-cols-1 gap-3">
+                      <Link href="/electricity-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">⚡</span>
+                        <span className="font-medium">Electricity Bill</span>
                       </Link>
-                      <Link href="/dth-recharge" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🚗</span>
-                        <span className="font-medium text-sm">DTH</span>
+                      <Link href="/water-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">💧</span>
+                        <span className="font-medium">Water Bill Payment</span>
                       </Link>
-                      <Link href="/electricity-bill" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">💡</span>
-                        <span className="font-medium text-sm">Electricity</span>
+                      <Link href="/broadband-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📞</span>
+                        <span className="font-medium">Landline / Broadband</span>
                       </Link>
-                      <Link href="/loan-repayment" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">💰</span>
-                        <span className="font-medium text-sm">Loan Repayment</span>
+                      <Link href="/gas-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">🔥</span>
+                        <span className="font-medium">Gas Bill Payment</span>
                       </Link>
-                      <Link href="/piped-gas" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-red-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">⛽</span>
-                        <span className="font-medium text-sm">Piped Gas</span>
+                      <Link href="/mobile-recharge" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📱</span>
+                        <span className="font-medium">Mobile Recharge</span>
                       </Link>
-                      <Link href="/postpaid-bill" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-pink-50 hover:to-purple-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">📱</span>
-                        <span className="font-medium text-sm">Postpaid Bill</span>
+                      <Link href="/dth-recharge" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📺</span>
+                        <span className="font-medium">DTH Recharge</span>
                       </Link>
-                      <Link href="/fastag-recharge" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-teal-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🏪</span>
-                        <span className="font-medium text-sm">Fastag Recharge</span>
-                      </Link>
-                      <Link href="/insurance" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🛡️</span>
-                        <span className="font-medium text-sm">Insurance</span>
-                      </Link>
-                      <Link href="/cable-tv" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">📺</span>
-                        <span className="font-medium text-sm">Cable TV</span>
-                      </Link>
-                      <Link href="/broadband-bill" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">📶</span>
-                        <span className="font-medium text-sm">Broadband</span>
-                      </Link>
-                      <Link href="/water-bill" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-cyan-50 hover:to-blue-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🚰</span>
-                        <span className="font-medium text-sm">Water</span>
-                      </Link>
-                      <Link href="/credit-card" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">💳</span>
-                        <span className="font-medium text-sm">Credit Card</span>
-                      </Link>
-                      <Link href="/municipal-tax" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🏛️</span>
-                        <span className="font-medium text-sm">Municipal Tax</span>
-                      </Link>
-                      <Link href="/club-association" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">⚽</span>
-                        <span className="font-medium text-sm">Club & Association</span>
-                      </Link>
-                      <Link href="/education" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🎓</span>
-                        <span className="font-medium text-sm">Education</span>
-                      </Link>
-                      <Link href="/hospital" className="flex items-center gap-2 p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-pink-50 hover:to-rose-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
-                        <span className="text-lg group-hover/item:scale-110 transition-transform duration-300">🏥</span>
-                        <span className="font-medium text-sm">Hospital</span>
+                      <Link href="/mobile-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-slate-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📋</span>
+                        <span className="font-medium">Mobile Bill Payment</span>
                       </Link>
                     </div>
                   </div>
