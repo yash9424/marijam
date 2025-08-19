@@ -11,11 +11,14 @@ export default function Home() {
   const [servicesTimeout, setServicesTimeout] = useState<NodeJS.Timeout | null>(null);
   const [policyTimeout, setPolicyTimeout] = useState<NodeJS.Timeout | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
+    handleScroll(); // Set initial state
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -59,7 +62,7 @@ export default function Home() {
         <div className="absolute bottom-20 right-1/4 w-40 h-40 bg-gradient-to-br from-green-400 to-blue-500 rounded-full opacity-20 animate-ping"></div>
       </div>
 
-  <header className={`fixed top-0 left-0 w-full z-[100] border-b shadow-2xl transition-colors duration-300 ${scrolled ? "bg-white/90 border-gray-200" : "backdrop-blur-xl bg-white/5 border-white/10"}`}>
+  <header className={`fixed top-0 left-0 w-full z-[100] border-b shadow-2xl transition-colors duration-300 ${mounted && scrolled ? "bg-white/90 border-gray-200" : "backdrop-blur-xl bg-white/5 border-white/10"}`}>
   <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           {/* Logo Section */}
           <div className="flex items-center gap-4 group">
@@ -72,20 +75,20 @@ export default function Home() {
               <div className="absolute -inset-2 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-600/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
             <div className="flex flex-col group-hover:scale-105 transition-transform duration-300">
-              <span className={`font-bold text-2xl leading-tight drop-shadow-lg tracking-wide transition-colors duration-300 ${scrolled ? "text-gray-900" : "text-white"}`}>MARIJAM</span>
-              <span className={`font-semibold text-sm leading-tight drop-shadow-md tracking-wider transition-colors duration-300 ${scrolled ? "text-gray-700" : "text-white/90"}`}>TECHNOLOGIES</span>
+              <span className={`font-bold text-2xl leading-tight drop-shadow-lg tracking-wide transition-colors duration-300 ${mounted && scrolled ? "text-gray-900" : "text-white"}`}>MARIJAM</span>
+              <span className={`font-semibold text-sm leading-tight drop-shadow-md tracking-wider transition-colors duration-300 ${mounted && scrolled ? "text-gray-700" : "text-white/90"}`}>TECHNOLOGIES</span>
             </div>
           </div>
 
           {/* Navigation Menu */}
-          <nav className={`hidden lg:flex items-center gap-1 transition-colors duration-300 ${scrolled ? "text-gray-900" : "text-white"}`}>
+          <nav className={`hidden lg:flex items-center gap-1 transition-colors duration-300 ${mounted && scrolled ? "text-gray-900" : "text-white"}`}>
             {/* Home Link */}
             <a 
               href="#" 
-              className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
+              className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
             >
               <span className="relative z-10">Home</span>
-              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
+              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${mounted && scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
             </a>
             
             {/* Services Dropdown */}
@@ -95,12 +98,12 @@ export default function Home() {
               onMouseLeave={handleServicesMouseLeave}
             >
               <button
-                className={`flex items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
+                className={`flex items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
                 onClick={() => setServicesOpen(!servicesOpen)}
               >
                 <span>Services</span>
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""} ${scrolled ? "text-gray-900" : "text-white"}`}
+                  className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""} ${mounted && scrolled ? "text-gray-900" : "text-white"}`}
                 />
               </button>
               
@@ -111,24 +114,34 @@ export default function Home() {
                 >
                   <div className="p-6">
                     <div className="grid grid-cols-1 gap-3">
-                      {[
-                        { name: "Electricity Bill", icon: "⚡" },
-                        { name: "Water Bill Payment", icon: "💧" },
-                        { name: "Landline / Broadband", icon: "📞" },
-                        { name: "Gas Bill Payment", icon: "🔥" },
-                        { name: "Mobile Recharge", icon: "📱" },
-                        { name: "DTH Recharge", icon: "📺" },
-                        { name: "Mobile Bill Payment", icon: "📋" },
-                      ].map((service, index) => (
-                        <div
-                          key={service.name}
-                          className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item"
-                          style={{ animationDelay: `${index * 50}ms` }}
-                        >
-                          <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">{service.icon}</span>
-                          <span className="font-medium">{service.name}</span>
-                        </div>
-                      ))}
+                      <Link href="/electricity-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-yellow-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">⚡</span>
+                        <span className="font-medium">Electricity Bill</span>
+                      </Link>
+                      <Link href="/water-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">💧</span>
+                        <span className="font-medium">Water Bill Payment</span>
+                      </Link>
+                      <Link href="/broadband-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📞</span>
+                        <span className="font-medium">Landline / Broadband</span>
+                      </Link>
+                      <Link href="/gas-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-red-50 hover:to-orange-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">🔥</span>
+                        <span className="font-medium">Gas Bill Payment</span>
+                      </Link>
+                      <Link href="/mobile-recharge" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📱</span>
+                        <span className="font-medium">Mobile Recharge</span>
+                      </Link>
+                      <Link href="/dth-recharge" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📺</span>
+                        <span className="font-medium">DTH Recharge</span>
+                      </Link>
+                      <Link href="/mobile-bill" className="flex items-center gap-3 p-3 rounded-2xl text-gray-700 hover:bg-gradient-to-r hover:from-gray-50 hover:to-slate-50 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg group/item">
+                        <span className="text-xl group-hover/item:scale-110 transition-transform duration-300">📋</span>
+                        <span className="font-medium">Mobile Bill Payment</span>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -138,10 +151,10 @@ export default function Home() {
             {/* About Link */}
             <a 
               href="#about" 
-              className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
+              className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
             >
               <span className="relative z-10">About</span>
-              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
+              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${mounted && scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
             </a>
             
             {/* Company Policy Dropdown */}
@@ -151,12 +164,12 @@ export default function Home() {
               onMouseLeave={handlePolicyMouseLeave}
             >
               <button
-                className={`flex items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
+                className={`flex items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
                 onClick={() => setPolicyOpen(!policyOpen)}
               >
                 <span>Company Policy</span>
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${policyOpen ? "rotate-180" : ""} ${scrolled ? "text-gray-900" : "text-white"}`}
+                  className={`w-4 h-4 transition-transform duration-300 ${policyOpen ? "rotate-180" : ""} ${mounted && scrolled ? "text-gray-900" : "text-white"}`}
                 />
               </button>
               
@@ -195,19 +208,19 @@ export default function Home() {
             {/* FAQs Link */}
             <a 
               href="#faqs" 
-              className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
+              className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
             >
               <span className="relative z-10">FAQs</span>
-              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
+              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${mounted && scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
             </a>
             
             {/* Contact Link */}
             <a 
               href="#contact" 
-              className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
+              className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
             >
               <span className="relative z-10">Contact</span>
-              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
+              <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${mounted && scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
             </a>
           </nav>
 
@@ -229,7 +242,7 @@ export default function Home() {
           </div>
 
           {/* Mobile Menu */}
-          <MobileMenu scrolled={scrolled} />
+          <MobileMenu scrolled={mounted && scrolled} />
         </div>
       </header>
 

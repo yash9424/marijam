@@ -6,10 +6,13 @@ import { Menu } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
-import { useAppContext } from "./providers"
 
-export function MobileMenu() {
-  const { scrolled } = useAppContext()
+
+interface MobileMenuProps {
+  scrolled: boolean
+}
+
+export function MobileMenu({ scrolled }: MobileMenuProps) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -32,26 +35,40 @@ export function MobileMenu() {
           >
             Home
           </Link>
-          <Link
-            href="/#services"
-            className="block px-4 py-3 text-lg font-medium text-gray-900 hover:text-purple-600 transition-colors"
-            onClick={() => setOpen(false)}
-          >
-            Services
-          </Link>
+          
+          <div className="px-4 py-2">
+            <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Services</h3>
+            <div className="space-y-2">
+              <Link href="/electricity-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>⚡</span><span className="text-sm">Electricity Bill</span>
+              </Link>
+              <Link href="/water-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>💧</span><span className="text-sm">Water Bill</span>
+              </Link>
+              <Link href="/broadband-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>📞</span><span className="text-sm">Broadband</span>
+              </Link>
+              <Link href="/gas-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>🔥</span><span className="text-sm">Gas Bill</span>
+              </Link>
+              <Link href="/mobile-recharge" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>📱</span><span className="text-sm">Mobile Recharge</span>
+              </Link>
+              <Link href="/dth-recharge" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>📺</span><span className="text-sm">DTH Recharge</span>
+              </Link>
+              <Link href="/mobile-bill" className="flex items-center gap-3 px-2 py-2 text-gray-700 hover:text-purple-600 transition-colors" onClick={() => setOpen(false)}>
+                <span>📋</span><span className="text-sm">Mobile Bill</span>
+              </Link>
+            </div>
+          </div>
+          
           <Link
             href="/#about"
             className="block px-4 py-3 text-lg font-medium text-gray-900 hover:text-purple-600 transition-colors"
             onClick={() => setOpen(false)}
           >
             About
-          </Link>
-          <Link
-            href="/#faqs"
-            className="block px-4 py-3 text-lg font-medium text-gray-900 hover:text-purple-600 transition-colors"
-            onClick={() => setOpen(false)}
-          >
-            FAQs
           </Link>
           <Link
             href="/#contact"
