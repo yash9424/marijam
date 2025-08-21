@@ -3,8 +3,11 @@ import { Button } from "@/components/ui/button"
 import { SharedHeader } from "@/components/static-header"
 import { SharedFooter } from "@/components/shared-footer"
 
-import { HydrationBoundary } from "@/components/hydration-boundary"`nexport default function Education() {
-  return (`n    <HydrationBoundary>
+import { HydrationBoundary } from "@/components/hydration-boundary"
+
+export default function Education() {
+  return (
+    <HydrationBoundary>
     <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 relative overflow-hidden">
       <SharedHeader />
       
@@ -71,5 +74,6 @@ import { HydrationBoundary } from "@/components/hydration-boundary"`nexport defa
 
       <SharedFooter />
     </div>
+    </HydrationBoundary>
   )
 }
