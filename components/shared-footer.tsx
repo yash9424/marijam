@@ -42,7 +42,7 @@ export function SharedFooter() {
                 </a>
               </li>
               <li>
-                <a href="/#about" className="hover:text-blue-500">
+                <a href="/#services" className="hover:text-blue-500">
                   Services
                 </a>
               </li>

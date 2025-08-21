@@ -1,12 +1,12 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { StaticHeader } from "@/components/static-header"
+import { SharedHeader } from "@/components/static-header"
 import { SharedFooter } from "@/components/shared-footer"
 
-export default function Education() {
-  return (
-    <div className="min-h-screen bg-white">
-      <StaticHeader />
+import { HydrationBoundary } from "@/components/hydration-boundary"`nexport default function Education() {
+  return (`n    <HydrationBoundary>
+    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 relative overflow-hidden">
+      <SharedHeader />
       
       <section className="relative z-0 flex flex-col lg:flex-row items-center justify-between px-6 py-12 pt-32 max-w-7xl mx-auto">
         <div className="flex-1 max-w-lg text-center lg:text-left mb-12 lg:mb-0">

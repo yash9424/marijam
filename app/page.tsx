@@ -383,7 +383,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-16 scroll-animate">
+      <section id="services" className="bg-white py-16 scroll-animate">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">
@@ -727,22 +727,22 @@ export default function Home() {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500">
+                  <a href="#services" className="hover:text-blue-500">
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500">
+                  <a href="#about" className="hover:text-blue-500">
                     About Us
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500">
+                  <a href="/terms" className="hover:text-blue-500">
                     Terms & Conditions
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500">
+                  <a href="/refund-policy" className="hover:text-blue-500">
                     Refund Policy
                   </a>
                 </li>
@@ -753,17 +753,17 @@ export default function Home() {
               <h3 className="font-bold text-gray-800 mb-4">Support</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>
-                  <a href="#" className="hover:text-blue-500">
+                  <a href="#faqs" className="hover:text-blue-500">
                     FAQs
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500">
+                  <a href="/privacy" className="hover:text-blue-500">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-blue-500">
+                  <a href="#contact" className="hover:text-blue-500">
                     Contact Us
                   </a>
                 </li>

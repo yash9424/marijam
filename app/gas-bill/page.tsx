@@ -1,12 +1,20 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { StaticHeader } from "@/components/static-header"
+import { SharedHeader } from "@/components/shared-header"
 import { SharedFooter } from "@/components/shared-footer"
+import { HydrationBoundary } from "@/components/hydration-boundary"
 
 export default function GasBill() {
   return (
-    <div className="min-h-screen bg-white">
-      <StaticHeader />
+    <HydrationBoundary>
+      <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-yellow-400 to-pink-500 rounded-full opacity-20 animate-pulse"></div>
+          <div className="absolute top-1/2 -left-20 w-60 h-60 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full opacity-20 animate-bounce"></div>
+          <div className="absolute bottom-20 right-1/4 w-40 h-40 bg-gradient-to-br from-green-400 to-blue-500 rounded-full opacity-20 animate-ping"></div>
+        </div>
+        
+        <SharedHeader />
       
       <section className="relative z-0 flex flex-col lg:flex-row items-center justify-between px-6 py-12 pt-32 max-w-7xl mx-auto">
         <div className="flex-1 max-w-lg text-center lg:text-left mb-12 lg:mb-0">
@@ -69,7 +77,8 @@ export default function GasBill() {
         </div>
       </section>
 
-      <SharedFooter />
-    </div>
+        <SharedFooter />
+      </div>
+    </HydrationBoundary>
   )
 }
