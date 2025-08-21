@@ -5,6 +5,8 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -17,10 +19,44 @@ export default function Register() {
 
   const captchaCode = "09e99d"
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const router = useRouter()
+  const { toast } = useToast()
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle registration logic here
-    console.log("Registration data:", formData)
+    
+    // Validate captcha
+    if (formData.captcha !== captchaCode) {
+      toast({
+        variant: "destructive",
+        title: "Invalid Captcha",
+        description: "Please enter the correct captcha code."
+      })
+      return
+    }
+    
+    try {
+      // Handle registration logic here
+      console.log("Registration data:", formData)
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      // Registration successful - redirect to login
+      toast({
+        title: "Registration Successful!",
+        description: "Please login with your credentials."
+      })
+      
+      setTimeout(() => router.push("/login"), 1500)
+    } catch (error) {
+      console.error("Registration failed:", error)
+      toast({
+        variant: "destructive",
+        title: "Registration Failed",
+        description: "Please try again later."
+      })
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

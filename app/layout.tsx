@@ -4,10 +4,11 @@ import "./globals.css"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { HydrationBoundary } from "@/components/hydration-boundary"
 import { Suspense } from "react"
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
+  title: "MARIJAM TECHNOLOGIES",
+  description: "Mobile recharge & bill payments platform",
   generator: "v0.app",
 }
 
@@ -30,6 +31,9 @@ export default function RootLayout({
           </Suspense>
         </HydrationBoundary>
         <ScrollAnimation />
+        <HydrationBoundary>
+          <Toaster />
+        </HydrationBoundary>
       </body>
     </html>
   )

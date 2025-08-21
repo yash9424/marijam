@@ -1,38 +1,21 @@
 "use client"
 
-import { Component, ReactNode } from "react"
+import { useEffect, useState } from "react"
 
-interface Props {
-  children: ReactNode
+interface HydrationBoundaryProps {
+  children: React.ReactNode
 }
 
-interface State {
-  hasError: boolean
-}
+export function HydrationBoundary({ children }: HydrationBoundaryProps) {
+  const [isHydrated, setIsHydrated] = useState(false)
 
-export class HydrationBoundary extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
-    this.state = { hasError: false }
+  useEffect(() => {
+    setIsHydrated(true)
+  }, [])
+
+  if (!isHydrated) {
+    return null
   }
 
-  static getDerivedStateFromError(): State {
-    return { hasError: true }
-  }
-
-  componentDidCatch(error: Error) {
-    // Only log hydration errors in development
-    if (process.env.NODE_ENV === 'development' && error.message.includes('hydration')) {
-      console.warn('Hydration error suppressed:', error.message)
-    }
-  }
-
-  render() {
-    if (this.state.hasError) {
-      // Return children anyway to continue rendering
-      return this.props.children
-    }
-
-    return this.props.children
-  }
+  return <>{children}</>
 }

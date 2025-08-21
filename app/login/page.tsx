@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { useState } from "react"
 import { ChevronLeft, Loader2 } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useToast } from "@/components/ui/use-toast"
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -13,6 +15,8 @@ export default function LoginPage() {
     password: "",
   })
   const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
+  const { toast } = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -22,8 +26,28 @@ export default function LoginPage() {
       // Add your login logic here
       console.log("Form submitted:", formData)
       await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate API call
+      
+      // Store user data (in real app, get this from API response)
+      const userData = {
+        name: formData.email.split('@')[0], // Use email prefix as name for demo
+        email: formData.email
+      }
+      localStorage.setItem('user', JSON.stringify(userData))
+      
+      // Login successful - redirect to home
+      toast({
+        title: "Login Successful!",
+        description: "Welcome back to MARIJAM TECHNOLOGIES."
+      })
+      
+      setTimeout(() => router.push("/"), 1500)
     } catch (error) {
       console.error("Login failed:", error)
+      toast({
+        variant: "destructive",
+        title: "Login Failed",
+        description: "Please check your credentials and try again."
+      })
     } finally {
       setIsLoading(false)
     }

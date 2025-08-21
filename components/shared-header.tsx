@@ -1,57 +1,70 @@
 "use client"
+
+import { ChevronDown, Sparkles, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { ChevronDown, Sparkles, Zap } from "lucide-react"
 import { MobileMenu } from "@/components/mobile-menu"
 
 export function SharedHeader() {
-  const [servicesOpen, setServicesOpen] = useState(false)
-  const [policyOpen, setPolicyOpen] = useState(false)
-  const [servicesTimeout, setServicesTimeout] = useState<NodeJS.Timeout | null>(null)
-  const [policyTimeout, setPolicyTimeout] = useState<NodeJS.Timeout | null>(null)
-  const [scrolled, setScrolled] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [policyOpen, setPolicyOpen] = useState(false);
+  const [servicesTimeout, setServicesTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [policyTimeout, setPolicyTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [user, setUser] = useState<{name: string, email: string} | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    setMounted(true);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    handleScroll();
     window.addEventListener("scroll", handleScroll)
+    
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      setUser(JSON.parse(userData))
+    }
+    
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const handleServicesMouseEnter = () => {
     if (servicesTimeout) {
-      clearTimeout(servicesTimeout)
-      setServicesTimeout(null)
+      clearTimeout(servicesTimeout);
+      setServicesTimeout(null);
     }
-    setServicesOpen(true)
-  }
+    setServicesOpen(true);
+  };
 
   const handleServicesMouseLeave = () => {
     const timeout = setTimeout(() => {
-      setServicesOpen(false)
-    }, 150)
-    setServicesTimeout(timeout)
-  }
+      setServicesOpen(false);
+    }, 150);
+    setServicesTimeout(timeout);
+  };
 
   const handlePolicyMouseEnter = () => {
     if (policyTimeout) {
-      clearTimeout(policyTimeout)
-      setPolicyTimeout(null)
+      clearTimeout(policyTimeout);
+      setPolicyTimeout(null);
     }
-    setPolicyOpen(true)
-  }
+    setPolicyOpen(true);
+  };
 
   const handlePolicyMouseLeave = () => {
     const timeout = setTimeout(() => {
-      setPolicyOpen(false)
-    }, 150)
-    setPolicyTimeout(timeout)
-  }
+      setPolicyOpen(false);
+    }, 150);
+    setPolicyTimeout(timeout);
+  };
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-[100] border-b shadow-2xl transition-colors duration-300 ${scrolled ? "bg-white/90 border-gray-200" : "backdrop-blur-xl bg-white/5 border-white/10"}`}>
+    <header className={`fixed top-0 left-0 w-full z-[100] border-b shadow-2xl transition-colors duration-300 ${mounted && scrolled ? "bg-white/90 border-gray-200" : "backdrop-blur-xl bg-white/5 border-white/10"}`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-4 group">
+        <div className="flex items-center gap-4 group">
           <div className="relative">
             <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-500 hover:rotate-12 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
@@ -61,21 +74,21 @@ export function SharedHeader() {
             <div className="absolute -inset-2 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-600/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
           <div className="flex flex-col group-hover:scale-105 transition-transform duration-300">
-            <span className={`font-bold text-2xl leading-tight drop-shadow-lg tracking-wide transition-colors duration-300 ${scrolled ? "text-gray-900" : "text-white"}`}>MARIJAM</span>
-            <span className={`font-semibold text-sm leading-tight drop-shadow-md tracking-wider transition-colors duration-300 ${scrolled ? "text-gray-700" : "text-white/90"}`}>TECHNOLOGIES</span>
+            <span className={`font-bold text-2xl leading-tight drop-shadow-lg tracking-wide transition-colors duration-300 ${mounted && scrolled ? "text-gray-900" : "text-white"}`}>MARIJAM</span>
+            <span className={`font-semibold text-sm leading-tight drop-shadow-md tracking-wider transition-colors duration-300 ${mounted && scrolled ? "text-gray-700" : "text-white/90"}`}>TECHNOLOGIES</span>
           </div>
-        </Link>
+        </div>
 
-        <nav className={`hidden lg:flex items-center gap-1 transition-colors duration-300 ${scrolled ? "text-gray-900" : "text-white"}`}>
-          <Link href="/" className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}>
+        <nav className={`hidden lg:flex items-center gap-1 transition-colors duration-300 ${mounted && scrolled ? "text-gray-900" : "text-white"}`}>
+          <a href="/" className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}>
             <span className="relative z-10">Home</span>
-            <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
-          </Link>
+            <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${mounted && scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
+          </a>
           
           <div className="relative" onMouseEnter={handleServicesMouseEnter} onMouseLeave={handleServicesMouseLeave}>
-            <button className={`flex items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`} onClick={() => setServicesOpen(!servicesOpen)}>
+            <button className={`flex items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`} onClick={() => setServicesOpen(!servicesOpen)}>
               <span>Services</span>
-              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""} ${scrolled ? "text-gray-900" : "text-white"}`} />
+              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""} ${mounted && scrolled ? "text-gray-900" : "text-white"}`} />
             </button>
             
             {servicesOpen && (
@@ -116,15 +129,15 @@ export function SharedHeader() {
             )}
           </div>
 
-          <Link href="/#about" className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}>
+          <a href="/#about" className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}>
             <span className="relative z-10">About</span>
-            <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
-          </Link>
+            <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${mounted && scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
+          </a>
           
           <div className="relative" onMouseEnter={handlePolicyMouseEnter} onMouseLeave={handlePolicyMouseLeave}>
-            <button className={`flex items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`} onClick={() => setPolicyOpen(!policyOpen)}>
+            <button className={`flex items-center gap-2 px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`} onClick={() => setPolicyOpen(!policyOpen)}>
               <span>Company Policy</span>
-              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${policyOpen ? "rotate-180" : ""} ${scrolled ? "text-gray-900" : "text-white"}`} />
+              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${policyOpen ? "rotate-180" : ""} ${mounted && scrolled ? "text-gray-900" : "text-white"}`} />
             </button>
             
             {policyOpen && (
@@ -147,34 +160,53 @@ export function SharedHeader() {
             )}
           </div>
 
-          <Link href="/#faqs" className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}>
+          <a href="/#faqs" className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}>
             <span className="relative z-10">FAQs</span>
-            <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
-          </Link>
+            <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${mounted && scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
+          </a>
           
-          <Link href="/#contact" className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}>
+          <a href="/#contact" className={`relative group px-4 py-3 rounded-2xl transition-all duration-300 font-medium ${mounted && scrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"}`}>
             <span className="relative z-10">Contact</span>
-            <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
-          </Link>
+            <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${mounted && scrolled ? "bg-gray-100" : "bg-gradient-to-r from-cyan-400/20 to-blue-500/20"}`}></div>
+          </a>
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
-          <Link href="/register">
-            <Button className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-pink-600 hover:via-red-600 hover:to-yellow-600 text-white px-8 py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group font-semibold">
-              <span className="relative z-10">Register</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <Zap className="absolute top-2 right-2 w-4 h-4 text-yellow-200 opacity-0 group-hover:opacity-100 animate-pulse" />
-            </Button>
-          </Link>
-          <Link href="/login">
-            <Button className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group font-semibold">
-              <span className="relative z-10">Login</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Button>
-          </Link>
+        <div className="hidden lg:flex items-center gap-3 min-w-0">
+          {user ? (
+            <div className="flex items-center gap-3 min-w-0">
+              <span className={`font-medium text-sm ${mounted && scrolled ? "text-gray-900" : "text-white"}`}>
+                Welcome, {user.name}
+              </span>
+              <Button 
+                onClick={() => {
+                  localStorage.removeItem('user')
+                  setUser(null)
+                }}
+                className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-2 rounded-xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl font-semibold text-sm flex-shrink-0"
+              >
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <>
+              <Link href="/register">
+                <Button className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-pink-600 hover:via-red-600 hover:to-yellow-600 text-white px-8 py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group font-semibold">
+                  <span className="relative z-10">Register</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <Zap className="absolute top-2 right-2 w-4 h-4 text-yellow-200 opacity-0 group-hover:opacity-100 animate-pulse" />
+                </Button>
+              </Link>
+              <Link href="/login">
+                <Button className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group font-semibold">
+                  <span className="relative z-10">Login</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </Button>
+              </Link>
+            </>
+          )}
         </div>
 
-        <MobileMenu scrolled={scrolled} />
+        <MobileMenu scrolled={mounted && scrolled} />
       </div>
     </header>
   )

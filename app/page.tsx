@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { MobileMenu } from "@/components/mobile-menu"
+import { HydrationBoundary } from "@/components/hydration-boundary"
 
 export default function Home() {
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -12,6 +13,7 @@ export default function Home() {
   const [policyTimeout, setPolicyTimeout] = useState<NodeJS.Timeout | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [user, setUser] = useState<{name: string, email: string} | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -20,6 +22,13 @@ export default function Home() {
     }
     handleScroll(); // Set initial state
     window.addEventListener("scroll", handleScroll)
+    
+    // Check for logged in user
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      setUser(JSON.parse(userData))
+    }
+    
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -54,7 +63,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 relative overflow-hidden">
+    <HydrationBoundary>
+      <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 relative overflow-hidden">
       {/* Animated background elements for funky design */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-yellow-400 to-pink-500 rounded-full opacity-20 animate-pulse"></div>
@@ -225,20 +235,39 @@ export default function Home() {
           </nav>
 
           {/* Action Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Link href="/register">
-              <Button className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-pink-600 hover:via-red-600 hover:to-yellow-600 text-white px-8 py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group font-semibold">
-                <span className="relative z-10">Register</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <Zap className="absolute top-2 right-2 w-4 h-4 text-yellow-200 opacity-0 group-hover:opacity-100 animate-pulse" />
-              </Button>
-            </Link>
-            <Link href="/login">
-              <Button className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group font-semibold">
-                <span className="relative z-10">Login</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </Button>
-            </Link>
+          <div className="hidden lg:flex items-center gap-3 min-w-0">
+            {user ? (
+              <div className="flex items-center gap-3 min-w-0">
+                <span className={`font-medium text-sm ${mounted && scrolled ? "text-gray-900" : "text-white"}`}>
+                  Welcome, {user.name}
+                </span>
+                <Button 
+                  onClick={() => {
+                    localStorage.removeItem('user')
+                    setUser(null)
+                  }}
+                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-4 py-2 rounded-xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl font-semibold text-sm flex-shrink-0"
+                >
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link href="/register">
+                  <Button className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-pink-600 hover:via-red-600 hover:to-yellow-600 text-white px-8 py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group font-semibold">
+                    <span className="relative z-10">Register</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <Zap className="absolute top-2 right-2 w-4 h-4 text-yellow-200 opacity-0 group-hover:opacity-100 animate-pulse" />
+                  </Button>
+                </Link>
+                <Link href="/login">
+                  <Button className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden group font-semibold">
+                    <span className="relative z-10">Login</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu */}
@@ -762,7 +791,8 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </HydrationBoundary>
   )
 }
 
